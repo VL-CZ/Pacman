@@ -50,7 +50,13 @@ namespace Pacman.Models
                 for (int j = 0; j < Size; j++)
                 {
                     int cellID = i * Size + j;
-                    row.Add(new Box(cellID, 0));
+                    BoxStatus status = BoxStatus.Free;
+
+                    if (i == 0 || j == 0 || i == Size - 1 || j == Size - 1)
+                    {
+                        status = BoxStatus.Wall;
+                    }
+                    row.Add(new Box(cellID, status));
                 }
                 Board.Add(row);
             }

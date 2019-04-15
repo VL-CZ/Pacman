@@ -21,16 +21,13 @@ namespace Pacman
     /// </summary>
     public partial class MainWindow : Window
     {
+        private Game _game;
+            
         public MainWindow()
         {
             InitializeComponent();
-            Game game = new Game();
-            DataContext = game;
-        }
-
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-
+            _game = new Game();
+            DataContext = _game;
         }
     }
 }

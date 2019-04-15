@@ -9,7 +9,7 @@
     <Window.Resources>
         <!-- Custom controls -->
         <DataTemplate x:Key="DataTemplate_Level2">
-            <TextBlock Tag="{Binding ID}" Height="20" Width="20" FontSize="20" Background="Red" Padding="0" />
+            <TextBlock Tag="{Binding ID}" Height="20" Width="20" FontSize="20" Background="Red" />
         </DataTemplate>
 
         <DataTemplate x:Key="DataTemplate_Level1">
