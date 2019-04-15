@@ -7,4 +7,5 @@ using System.Threading.Tasks;
 namespace Pacman
 {
     public enum BoxStatus { Wall, Free, Pacman, Opponent, Food }
+    public enum Direction { Left, Top, Right, Down }
 }

@@ -9,7 +9,7 @@
     <Window.Resources>
         <!-- Custom controls -->
         <DataTemplate x:Key="DataTemplate_Level2">
-            <TextBlock Tag="{Binding ID}" Height="20" Width="20" FontSize="20" Background="Red" />
+            <TextBlock Tag="{Binding ID}" Height="20" Width="20" FontSize="20" Background="{Binding Background}" />
         </DataTemplate>
 
         <DataTemplate x:Key="DataTemplate_Level1">
@@ -27,7 +27,12 @@
             <RowDefinition Height="70"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        
+
+        <StackPanel Orientation="Vertical" Grid.Row="0">
+            <TextBlock FontSize="30">Pacman</TextBlock>
+            <TextBlock FontSize="20" Text="{Binding Pacman.Score}"></TextBlock>
+        </StackPanel>
+
         <ItemsControl Name="GameBoard" Grid.Row="1" ItemsSource="{Binding Board.Board}" ItemTemplate="{DynamicResource DataTemplate_Level1}"
                       VerticalAlignment="Center" HorizontalAlignment="Center"/>
 

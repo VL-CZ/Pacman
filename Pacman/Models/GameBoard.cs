@@ -9,10 +9,21 @@ namespace Pacman.Models
 {
     public class GameBoard : ObservableObject
     {
+        private Random _generator;
+
+        /// <summary>
+        /// game board
+        /// </summary>
         public ObservableCollection<ObservableCollection<Box>> Board { get; }
 
+        /// <summary>
+        /// height/width of the board (dimensions are the same)
+        /// </summary>
         public int Size { get; }
 
+        /// <summary>
+        /// number of boxes in the board
+        /// </summary>
         public int BoxCount
         {
             get
@@ -35,12 +46,13 @@ namespace Pacman.Models
             {
                 Board = new ObservableCollection<ObservableCollection<Box>>();
                 Size = N;
+                _generator = new Random();
                 Initialize();
             }
         }
 
         /// <summary>
-        /// initialize board with boxes
+        /// initialize board
         /// </summary>
         private void Initialize()
         {
@@ -50,9 +62,13 @@ namespace Pacman.Models
                 for (int j = 0; j < Size; j++)
                 {
                     int cellID = i * Size + j;
-                    BoxStatus status = BoxStatus.Free;
+                    BoxStatus status = BoxStatus.Food;
 
-                    if (i == 0 || j == 0 || i == Size - 1 || j == Size - 1)
+                    if (i == 0 || j == 0 || (i == Size - 1) || (j == Size - 1)) // border of the labyrinth
+                    {
+                        status = BoxStatus.Wall;
+                    }
+                    else if ((i % 2 == 0 && j % 2 == 0) || (_generator.Next(1, 10) < 3 && (i + j) % 2 == 1)) // labyrinth generator
                     {
                         status = BoxStatus.Wall;
                     }
@@ -83,6 +99,22 @@ namespace Pacman.Models
             return null;
         }
 
+        /// <summary>
+        /// checks if this position is free (not a wall)
+        /// </summary>
+        /// <param name="box"></param>
+        /// <returns></returns>
+        public bool IsFree(Box box)
+        {
+            return box.Status != BoxStatus.Wall;
+        }
+
+        /// <summary>
+        /// get/set specified box in the board
+        /// </summary>
+        /// <param name="coord1"></param>
+        /// <param name="coord2"></param>
+        /// <returns></returns>
         public Box this[int coord1, int coord2]
         {
             get

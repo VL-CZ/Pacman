@@ -29,33 +29,33 @@ namespace Pacman.Models
         /// <summary>
         /// background of the box
         /// </summary>
-        public Color Background
+        public Brush Background
         {
             get
             {
-                Color color;
+                Brush brush;
                 switch (Status)
                 {
                     case BoxStatus.Wall:
-                        color = Colors.Black;
+                        brush = Brushes.Black;
                         break;
                     case BoxStatus.Free:
-                        color = Colors.White;
+                        brush = Brushes.White;
                         break;
                     case BoxStatus.Pacman:
-                        color = Colors.Red;
+                        brush = Brushes.Red;
                         break;
                     case BoxStatus.Opponent:
-                        color = Colors.Blue;
+                        brush = Brushes.Blue;
                         break;
                     case BoxStatus.Food:
-                        color = Colors.LightYellow;
+                        brush = Brushes.Yellow;
                         break;
                     default:
-                        color = Colors.White;
+                        brush = Brushes.White;
                         break;
                 }
-                return color;
+                return brush;
             }
         }
 

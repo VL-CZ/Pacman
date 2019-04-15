@@ -8,5 +8,14 @@ namespace Pacman.Models
 {
     public class Opponent : Player
     {
+        public Opponent(GameBoard board) : base(board)
+        {
+
+        }
+
+        public override void Move()
+        {
+            throw new NotImplementedException();
+        }
     }
 }
