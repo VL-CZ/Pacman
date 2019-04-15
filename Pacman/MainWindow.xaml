@@ -5,7 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Pacman"
         mc:Ignorable="d"
-        Title="MainWindow" MinHeight="700" MinWidth="1200" WindowStartupLocation="CenterScreen" WindowStyle="ThreeDBorderWindow">
+        Title="MainWindow" MinHeight="700" MinWidth="1200" WindowStartupLocation="CenterScreen" WindowStyle="ThreeDBorderWindow" 
+        KeyDown="Window_KeyDown">
     <Window.Resources>
         <!-- Custom controls -->
         <DataTemplate x:Key="DataTemplate_Level2">
@@ -30,8 +31,10 @@
 
         <StackPanel Orientation="Vertical" Grid.Row="0">
             <TextBlock FontSize="30">Pacman</TextBlock>
-            <TextBlock FontSize="20" Text="{Binding Pacman.Score}"></TextBlock>
+            <TextBlock FontSize="20" Text="{Binding Pacman.Score, StringFormat=Score: {0}}"></TextBlock>
         </StackPanel>
+
+        <TextBlock Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center" Text="{Binding Text}" FontSize="50"></TextBlock>
 
         <ItemsControl Name="GameBoard" Grid.Row="1" ItemsSource="{Binding Board.Board}" ItemTemplate="{DynamicResource DataTemplate_Level1}"
                       VerticalAlignment="Center" HorizontalAlignment="Center"/>

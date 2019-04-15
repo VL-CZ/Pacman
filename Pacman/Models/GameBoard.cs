@@ -52,6 +52,41 @@ namespace Pacman.Models
         }
 
         /// <summary>
+        /// get/set specified box in the board
+        /// </summary>
+        /// <param name="coord1"></param>
+        /// <param name="coord2"></param>
+        /// <returns></returns>
+        public Box this[int coord1, int coord2]
+        {
+            get
+            {
+                return Board[coord1][coord2];
+            }
+            set
+            {
+                Board[coord1][coord2] = value;
+            }
+        }
+
+        /// <summary>
+        /// get/set specified box in the board
+        /// </summary>
+        /// <param name="position">position of the box</param>
+        /// <returns></returns>
+        public Box this[Point position]
+        {
+            get
+            {
+                return this[position.Coord1, position.Coord2];
+            }
+            set
+            {
+                this[position.Coord1, position.Coord2] = value;
+            }
+        }
+
+        /// <summary>
         /// initialize board
         /// </summary>
         private void Initialize()
@@ -110,21 +145,11 @@ namespace Pacman.Models
         }
 
         /// <summary>
-        /// get/set specified box in the board
+        /// checks if this position is free (not a wall)
         /// </summary>
-        /// <param name="coord1"></param>
-        /// <param name="coord2"></param>
-        /// <returns></returns>
-        public Box this[int coord1, int coord2]
+        public bool IsFree(Point position)
         {
-            get
-            {
-                return Board[coord1][coord2];
-            }
-            set
-            {
-                Board[coord1][coord2] = value;
-            }
+            return IsFree(this[position.Coord1, position.Coord2]);
         }
     }
 }

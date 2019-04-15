@@ -8,7 +8,7 @@ namespace Pacman.Models
 {
     public class Opponent : Player
     {
-        public Opponent(GameBoard board) : base(board)
+        public Opponent(GameBoard board, Point position) : base(board, position)
         {
 
         }

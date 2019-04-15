@@ -22,9 +22,9 @@ namespace Pacman.Models
             }
         }
 
-        public Direction Orientation { get; private set; }
+        public Direction Orientation { get; set; }
 
-        public Pacman(GameBoard board) : base(board)
+        public Pacman(GameBoard board, Point position) : base(board, position)
         {
             Orientation = Direction.Right;
         }
@@ -38,7 +38,7 @@ namespace Pacman.Models
                 case Direction.Left:
                     horizontalShift--;
                     break;
-                case Direction.Top:
+                case Direction.Up:
                     verticalShift--;
                     break;
                 case Direction.Right:
@@ -51,7 +51,29 @@ namespace Pacman.Models
                     break;
             }
 
-            return new Point(bp.Coord1 + verticalShift, bp.Coord2 + horizontalShift);
+            SetBoardToNewPosition(new Point(Position.Coord1 + verticalShift, Position.Coord2 + horizontalShift));
+
+
+        }
+
+        public void CheckScore()
+        {
+            if (_board[Position].Status == BoxStatus.Food)
+                Score++;
+        }
+
+        public void CheckDeath()
+        {
+            if (_board[Position].Status == BoxStatus.Opponent)
+                Alive = false;
+        }
+
+        /// <summary>
+        /// chang
+        /// </summary>
+        private void CheckPosition()
+        {
+
         }
     }
 }

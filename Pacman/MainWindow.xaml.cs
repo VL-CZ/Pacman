@@ -22,12 +22,35 @@ namespace Pacman
     public partial class MainWindow : Window
     {
         private Game _game;
-            
+
         public MainWindow()
         {
             InitializeComponent();
             _game = new Game();
             DataContext = _game;
+        }
+
+        private void Window_KeyDown(object sender, KeyEventArgs e)
+        {
+            Direction direction = Direction.Left;
+            switch (e.Key)
+            {
+                case Key.Left:
+                    direction = Direction.Left;
+                    break;
+                case Key.Up:
+                    direction = Direction.Up;
+                    break;
+                case Key.Right:
+                    direction = Direction.Right;
+                    break;
+                case Key.Down:
+                    direction = Direction.Down;
+                    break;
+                default:
+                    break;
+            }
+            _game.Pacman.Orientation = direction;
         }
     }
 }
