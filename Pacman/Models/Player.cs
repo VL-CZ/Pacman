@@ -9,6 +9,7 @@ namespace Pacman.Models
     public abstract class Player : ObservableObject
     {
         protected GameBoard _board;
+
         /// <summary>
         /// is player alive?
         /// </summary>

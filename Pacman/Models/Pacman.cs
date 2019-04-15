@@ -22,6 +22,9 @@ namespace Pacman.Models
             }
         }
 
+        /// <summary>
+        /// orientation of pacman
+        /// </summary>
         public Direction Orientation { get; set; }
 
         public Pacman(GameBoard board, Point position) : base(board, position)
@@ -29,6 +32,9 @@ namespace Pacman.Models
             Orientation = Direction.Right;
         }
 
+        /// <summary>
+        /// execute move
+        /// </summary>
         public override void Move()
         {
             int horizontalShift = 0;
@@ -56,24 +62,22 @@ namespace Pacman.Models
 
         }
 
+        /// <summary>
+        /// check if box with pacman contains food
+        /// </summary>
         public void CheckScore()
         {
             if (_board[Position].Status == BoxStatus.Food)
                 Score++;
         }
 
+        /// <summary>
+        /// check collision with opponent
+        /// </summary>
         public void CheckDeath()
         {
             if (_board[Position].Status == BoxStatus.Opponent)
                 Alive = false;
-        }
-
-        /// <summary>
-        /// chang
-        /// </summary>
-        private void CheckPosition()
-        {
-
         }
     }
 }

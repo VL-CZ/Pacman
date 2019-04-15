@@ -13,18 +13,22 @@ namespace Pacman.Models
         /// size of the game board
         /// </summary>
         private readonly int _boardSize = 25;
+
         /// <summary>
         /// game board
         /// </summary>
         public GameBoard Board { get; }
+
         /// <summary>
         /// players in the game
         /// </summary>
         private readonly List<Player> _players;
+
         /// <summary>
         /// reference to pacman object
         /// </summary>
         public Pacman Pacman { get; }
+
         private string _text;
         /// <summary>
         /// text for binding in MainWindow.xaml
@@ -38,10 +42,12 @@ namespace Pacman.Models
                 RaisePropertyChanged();
             }
         }
+
         /// <summary>
         /// timer
         /// </summary>
         private DispatcherTimer _timer;
+
         /// <summary>
         /// timer interval in miliseconds
         /// </summary>
