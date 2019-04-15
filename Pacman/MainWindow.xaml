@@ -5,8 +5,31 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Pacman"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" MinHeight="700" MinWidth="1200" WindowStartupLocation="CenterScreen" WindowStyle="ThreeDBorderWindow">
+    <Window.Resources>
+        <!-- Custom controls -->
+        <DataTemplate x:Key="DataTemplate_Level2">
+            <TextBlock Tag="{Binding ID}" Height="20" Width="20" FontSize="20" Background="Red" Padding="0" />
+        </DataTemplate>
+
+        <DataTemplate x:Key="DataTemplate_Level1">
+            <ItemsControl ItemsSource="{Binding}" ItemTemplate="{DynamicResource DataTemplate_Level2}">
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <StackPanel Orientation="Horizontal" Margin="0" />
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+            </ItemsControl>
+        </DataTemplate>
+    </Window.Resources>
     <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="70"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
         
+        <ItemsControl Name="GameBoard" Grid.Row="1" ItemsSource="{Binding Board.Board}" ItemTemplate="{DynamicResource DataTemplate_Level1}"
+                      VerticalAlignment="Center" HorizontalAlignment="Center"/>
+
     </Grid>
 </Window>

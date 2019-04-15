@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Pacman.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,6 +24,13 @@ namespace Pacman
         public MainWindow()
         {
             InitializeComponent();
+            Game game = new Game();
+            DataContext = game;
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }
