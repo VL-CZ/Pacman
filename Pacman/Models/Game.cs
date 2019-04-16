@@ -77,20 +77,24 @@ namespace Pacman.Models
             _timer.Start();
         }
 
-        // Timer tick
+        /// <summary>
+        /// timer tick 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Timer_Tick(object sender, EventArgs e)
         {
-            //foreach (Player player in _players)
-            //{
-            //    player.Move();
-            //}
-            if (Pacman.Alive)
+            foreach (Player player in _players)
             {
-                Pacman.Move();
-            }
-            else
-            {
-                Text = "You Lost!";
+                if (player.Alive)
+                {
+                    player.Move();
+                }
+                if (!Pacman.Alive)
+                {
+                    _timer.Stop();
+                    Text = "Game over!";
+                }
             }
         }
     }

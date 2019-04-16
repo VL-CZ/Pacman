@@ -20,6 +20,11 @@ namespace Pacman.Models
         /// </summary>
         public Point Position { get; protected set; }
 
+        /// <summary>
+        /// orientation of the player
+        /// </summary>
+        public Direction Orientation { get; set; }
+
         public Player(GameBoard board, Point position)
         {
             _board = board;
@@ -52,6 +57,7 @@ namespace Pacman.Models
             else if (this is Opponent)
             {
                 _board[Position].Status = BoxStatus.Opponent;
+                
             }
         }
     }

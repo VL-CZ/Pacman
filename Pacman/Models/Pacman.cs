@@ -22,11 +22,6 @@ namespace Pacman.Models
             }
         }
 
-        /// <summary>
-        /// orientation of pacman
-        /// </summary>
-        public Direction Orientation { get; set; }
-
         public Pacman(GameBoard board, Point position) : base(board, position)
         {
             Orientation = Direction.Right;
@@ -37,6 +32,8 @@ namespace Pacman.Models
         /// </summary>
         public override void Move()
         {
+            CheckDeath();
+
             int horizontalShift = 0;
             int verticalShift = 0;
             switch (Orientation)
@@ -58,7 +55,6 @@ namespace Pacman.Models
             }
 
             SetBoardToNewPosition(new Point(Position.Coord1 + verticalShift, Position.Coord2 + horizontalShift));
-
 
         }
 
