@@ -22,7 +22,7 @@ namespace Pacman.Models
             {
                 _status = value;
                 RaisePropertyChanged();
-                RaisePropertyChanged(nameof(Background));
+                RaisePropertyChanged(nameof(BackgroundPath));
             }
         }
 
@@ -32,35 +32,35 @@ namespace Pacman.Models
         public BoxStatus OldStatus { get; set; }
 
         /// <summary>
-        /// background of the box
+        /// path to background image of the box
         /// </summary>
-        public Brush Background
+        public string BackgroundPath
         {
             get
             {
-                Brush brush;
+                string path;
                 switch (Status)
                 {
                     case BoxStatus.Wall:
-                        brush = Brushes.Black;
+                        path = @"~\..\Images\Wall.png";
                         break;
                     case BoxStatus.Free:
-                        brush = Brushes.White;
+                        path = @"~\..\Images\Free.png";
                         break;
                     case BoxStatus.Pacman:
-                        brush = Brushes.Red;
+                        path = @"~\..\Images\Pacman.png";
                         break;
                     case BoxStatus.Opponent:
-                        brush = Brushes.Blue;
+                        path = @"~\..\Images\Opponent.png";
                         break;
                     case BoxStatus.Food:
-                        brush = Brushes.Yellow;
+                        path = @"~\..\Images\Food.png";
                         break;
                     default:
-                        brush = Brushes.White;
+                        path = @"~\..\Images\Free.png";
                         break;
                 }
-                return brush;
+                return path;
             }
         }
 

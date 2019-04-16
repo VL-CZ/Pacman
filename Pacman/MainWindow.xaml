@@ -10,7 +10,7 @@
     <Window.Resources>
         <!-- Custom controls -->
         <DataTemplate x:Key="DataTemplate_Level2">
-            <TextBlock Tag="{Binding ID}" Height="20" Width="20" FontSize="20" Background="{Binding Background}" />
+            <Image Tag="{Binding ID}" Height="20" Width="20" Source="{Binding BackgroundPath}"/>
         </DataTemplate>
 
         <DataTemplate x:Key="DataTemplate_Level1">
