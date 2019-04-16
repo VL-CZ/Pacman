@@ -45,7 +45,17 @@ namespace Pacman.Models
             {
                 return;
             }
-            _board[Position].Status = BoxStatus.Free; // unset old position
+
+            if (this is Pacman)
+            {
+                _board[Position].Status = BoxStatus.Free; // unset old position
+            }
+            else if (this is Opponent)
+            {
+                _board[Position].Status = _board[Position].OldStatus; // restore previous status
+            }
+
+            _board[newPosition].OldStatus = _board[newPosition].Status; // store previous status
             Position = newPosition; // refresh position
 
             if (this is Pacman) // set new position in the board
@@ -56,9 +66,9 @@ namespace Pacman.Models
             }
             else if (this is Opponent)
             {
-                _board[Position].Status = BoxStatus.Opponent;
-                
+                _board[Position].Status = BoxStatus.Opponent;           
             }
+
         }
     }
 }

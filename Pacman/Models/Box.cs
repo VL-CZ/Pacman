@@ -27,6 +27,11 @@ namespace Pacman.Models
         }
 
         /// <summary>
+        /// old status of the box (used after player leaves the box -> set former value 
+        /// </summary>
+        public BoxStatus OldStatus { get; set; }
+
+        /// <summary>
         /// background of the box
         /// </summary>
         public Brush Background
@@ -63,6 +68,7 @@ namespace Pacman.Models
         {
             ID = id;
             Status = status;
+            OldStatus = BoxStatus.Food;
         }
     }
 }

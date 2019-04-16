@@ -33,6 +33,10 @@ namespace Pacman.Models
         public override void Move()
         {
             CheckDeath();
+            if (!Alive)
+            {
+                return;
+            }
 
             int horizontalShift = 0;
             int verticalShift = 0;
